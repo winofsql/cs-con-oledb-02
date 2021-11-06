@@ -12,11 +12,6 @@ namespace cs_con_oledb_02
             string target_accdb = @"\app\workspace\販売管理.accdb";
             string export_xlsx = @"\app\workspace\販売管理.xlsx";
 
-            if (File.Exists(export_xlsx))
-            {
-                File.Delete (export_xlsx);
-            }
-
             OleDbConnection myConAccess;
             OleDbCommand myCommand;
             OleDbDataReader myReader;
