@@ -35,9 +35,6 @@ namespace cs_con_oledb_02
 
                 using (myCommand = new OleDbCommand())
                 {
-                    // *********************
-                    // 接続
-                    // *********************
                     try
                     {
                         // コマンドオブジェクトに接続をセット
