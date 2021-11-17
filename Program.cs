@@ -9,19 +9,22 @@ namespace cs_con_oledb_02
     {
         static void Main(string[] args)
         {
-            string target_accdb = @"\app\workspace\販売管理.accdb";
-            string export_xlsx = @"\app\workspace\販売管理.xlsx";
+            string target_file = @"\app\workspace\販売管理.accdb";
+            string link_file = @"\app\workspace\商品マスタ.xlsx";
+
+            // string target_file = @"\app\workspace\販売管理.xlsx";
+            // string link_file = @"\app\workspace\販売管理.accdb";
 
             OleDbConnection myConAccess;
             OleDbCommand myCommand;
-            OleDbDataReader myReader;
 
             // *************************************
             // System.Data.OleDb
             // *************************************
             myConAccess = new OleDbConnection();
             myConAccess.ConnectionString =
-                $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={target_accdb};";
+                $"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={target_file};";
+                // @$"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={target_file};Extended Properties=""Excel 12.0 Xml;HDR=YES;IMEX=1""";
 
             // 接続を開く
             try
@@ -31,7 +34,9 @@ namespace cs_con_oledb_02
                 string myQuery;
 
                 myQuery =
-                    $"select * into [Excel 12.0 xml;DATABASE={export_xlsx}].商品マスタ from 商品マスタ";
+                    $"select * into [Excel 12.0 xml;DATABASE={link_file}].商品マスタ from 商品マスタ";
+                    // $"select * into [;DATABASE={link_file}].商品マスタ2 from 商品マスタ";
+                    // $"drop table [;DATABASE={link_file}].商品マスタ2";
 
                 using (myCommand = new OleDbCommand())
                 {
